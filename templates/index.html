@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube video Downloader</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Add CSS styles here */
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2eee3;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            color: black;
+        }
+        .footer a:hover {
+            transform: scale(1.2);
+            color: #007bff;
+        }
+        .footer p {
+            margin: 5px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">YouTube Video Downloader</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message[1] }} alert-dismissible fade show" role="alert">
+                        {{ message[0] }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if session['message'] %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session['message'] }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endif %}
+
+        <form action="{{ url_for('download') }}" method="post">
+            <div class="form-group">
+                <label for="youtube_link">Enter YouTube Link:</label>
+                <input type="text" class="form-control" id="youtube_link" name="youtube_link" required>
+            </div>
+            <div class="form-group">
+                <label for="resolution">Select Resolution:</label>
+                <select class="form-control" id="resolution" name="resolution">
+                    <option value="highest">Highest Available</option>
+                    <option value="720p">720p</option>
+                    <option value="480p">480p</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Download</button>
+        </form>
+        <div class="footer">
+            <p>Follow Me:
+            <a href="https://www.linkedin.com/in/sonukumarstm/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.twitter.com/sonu_stm/"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/Sonusinghania55"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/sonu__singhania"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/sonukumar012"><i class="fab fa-github"></i></a>            <p id="copyright"></p>
+            <p>Developed by<a href="#">Sonu Singhania</a></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code to update the copyright year dynamically
+        var currentYear = new Date().getFullYear();
+        document.getElementById('copyright').textContent = "All Rights Reserved © " + currentYear;
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
