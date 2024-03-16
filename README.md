@@ -14,9 +14,9 @@ Click on the "Download" button to start the download process.
 After successful download, if you wish to download another video, the option will be available below the download form.
 ## Technologies Used
 HTML
-CSS (Bootstrap for styling)
-JavaScript
-Python 
-Flask
+CSS (Bootstrap for styling),
+JavaScript,
+Python, 
+Flask,
 ## License
 This project is licensed under the MIT License.
