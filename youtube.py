@@ -27,4 +27,4 @@ def download():
             return redirect(url_for('index'))  # Redirect to index route to render the index template again
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
