@@ -1,2 +1,2 @@
-flask
-pytube
+Flask==2.0.2
+pytube==9.0.0
